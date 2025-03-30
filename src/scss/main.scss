@@ -27,25 +27,31 @@
     &_button {
         text-align: center;
         margin-top: 20px;
+       
     }
 
     &_count {
         font-size: 12px;
-       
-       
+        padding-block: 2px;
     }
-    &_restore {
-        padding-top: 2px;
-        font-size: 12px;
 
-      
-    }
     &_save {
         font-size: 12px;
     }
     
-}
+    &_restore {
+        padding-top: 0.3rem;
+        padding-bottom: 0.1rem;
+      
+        font-size: 12px;
+    }
 
+    &_delete {
+        font-size: 12px;
+        padding-top: 0.3rem;
+        padding-bottom: 0.2rem;
+    }
+}
 
 main {
     color: rgb(245, 121, 245);
@@ -100,6 +106,8 @@ main {
     grid-row-gap: 20px;
     color: white;
 
+    
+
     &_list {
         list-style: none;
         text-align: center;
@@ -107,7 +115,7 @@ main {
         justify-content: center;
         list-style-type: none;
         width: 250px;
-        height: 360px;
+        height: 380px;
         border-radius: 3%;
         border: solid rgb(245, 121, 245);
         background-color: rgb(90, 117, 182);
@@ -121,7 +129,8 @@ main {
     } 
 
     &_name {
-        font-size: 20px;
+        font-size: 22px;
+        margin-inline: 6px;
     }
     &_author {
         margin-top: 6px;

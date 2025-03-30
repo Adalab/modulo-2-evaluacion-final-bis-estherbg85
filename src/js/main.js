@@ -4,6 +4,8 @@
 
 const book = document.querySelector(".js_book");
 const countList = document.querySelector(".js_count");
+const saveButton = document.querySelector(".js_save");
+const restoreButton = document.querySelector(".js_restore");
 
 //ARRAYS
 
@@ -67,64 +69,34 @@ const handleCount = (ev) => {
 };
 
 // Actualizar el contador de libros en el carrito
+
 const updateCountList = () => {
   const countList = document.querySelector(".js_count");
 
   countList.textContent = bookCount; // Mostrar el número de libros en el carrito
 };
-/*
-  const allBooksLi = document.querySelectorAll(".js_booksList");
 
-  for (const li of allBooksLi) {
-    li.addEventListener("click", handleCount);
+// GUARDAR CARRITO EN LOCALSTORAGE CON LOS LIBROS SELECCIONADOS
+
+const saveCart = () => {
+  const selectedBooks = allBooks.filter((book) => book.added); // Filtrar solo los seleccionados
+  localStorage.setItem("savedCart", JSON.stringify(selectedBooks));
+};
+const restoreCart = () => {
+  const savedBooks = JSON.parse(localStorage.getItem("savedCart")); // Obtener los libros guardados
+
+  if (savedBooks && savedBooks.length > 0) {
+    allBooks = savedBooks; // Sobreescribir allBooks con solo los libros guardados
+    bookCount = savedBooks.length; // Actualizar el contador
+
+    renderAllBooks(allBooks); // Renderizar solo los libros guardados
   }
 };
+// Agregar el evento al botón de "Restaurar"
+restoreButton.addEventListener("click", restoreCart);
 
-const handleCount = (ev) => {
-  const clickedId = parseInt(ev.currentTarget.id);
+saveButton.addEventListener("click", saveCart);
 
-  const clickedBooksObj = allBooks.find(
-    (eachBooks) => eachBooks._id === clickedId
-  );
-
-  const countsIdx = bookCount.findIndex(
-    (eachBooks) => eachBooks.id === clickedId
-  );
-
-  if (countsIdx === -1) {
-    bookCount.push(clickedBooksObj);
-    renderCountBooks();
-  } else {
-    bookCount.splice(countsIdx, 1);
-  }
-};
-
-/*
-
-
-  // Actualizar el contador del carrito
-  updateCountList();
-};
-
-const toggleAddToCart = (bookId) => {
-  const book = allBooks.find((b) => b.id === bookId); // Buscar el libro por su id
-  if (book) {
-    book.added = !book.added;
-
-    // Actualizar el contador del carrito
-    if (book.added) {
-      bookCount++;
-    } else {
-      bookCount--;
-    }
-
-    renderAllBooks(allBooks);
-  }
-};
-
-const updateCountList = () => {
-  countList.textContent = bookCount;
-};*/
 // CUANDO CARGA LA PÁGINA
 
 fetch("http://beta.adalab.es/resources/apis/books-v1/childrens-books.json")
