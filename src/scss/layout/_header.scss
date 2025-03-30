@@ -24,14 +24,20 @@
     &_button {
         text-align: center;
         margin-top: 20px;
+        cursor: pointer;
+        transition: background-color 0.5s ease;
        
     }
-
+    button:active {
+        background-color: #f792f7; /* Cambiar el color de fondo cuando se hace clic */
+        color: white; 
+    }
+    
     &_count {
         font-size: 12px;
         padding-block: 2px;
     }
-
+  
     &_save {
         font-size: 12px;
     }
