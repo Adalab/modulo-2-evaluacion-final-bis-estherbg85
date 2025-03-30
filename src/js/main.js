@@ -130,11 +130,17 @@ fetch("http://beta.adalab.es/resources/apis/books-v1/childrens-books.json")
   .then((response) => response.json())
   .then((data) => {
     allBooks = data.map((book, id) => ({
-      id: book.id, // Asignar un id único (o usa el id si lo proporciona la API)
+      id: book.id,
       name: book.name,
       author: book.author,
       cover_image: book.cover_image,
-      added: false, // Propiedad que marca si el libro está en el carrito
+      added: false,
     }));
-    renderAllBooks(allBooks);
+    allBooks.forEach((element) => {
+      if (element.cover_image === null) {
+        element.cover_image =
+          "https://static.vecteezy.com/system/resources/previews/007/517/574/large_2x/red-closed-book-school-collection-illustration-cartoon-style-on-a-white-background-vector.jpg";
+        renderAllBooks(allBooks);
+      }
+    });
   });
