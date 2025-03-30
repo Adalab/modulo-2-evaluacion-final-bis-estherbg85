@@ -22,7 +22,7 @@ const renderOneBooks = (booksObj, selected) => {
   }"/>
             <h2 class="book_name">${booksObj.name}</h2> 
             <h4 class="book_author">${booksObj.author}</h4> 
-            <button class="cart_button">${
+            <button class="book_button">${
               booksObj.added ? "X Delete" : "🛒 Add"
             }</button>
         </li>`;
@@ -36,7 +36,7 @@ const renderAllBooks = (booksArray) => {
 
   book.innerHTML = html;
 
-  const cartButtons = document.querySelectorAll(".cart_button");
+  const cartButtons = document.querySelectorAll(".book_button");
   cartButtons.forEach((button) => {
     button.addEventListener("click", handleCount);
   });

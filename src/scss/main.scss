@@ -10,9 +10,9 @@
 }
 
 .header {
-    text-align: center;
 
     &_title {
+        text-align: center;
         word-spacing: 20px;
         font-size: 26px;
         padding-block: 20px;
@@ -21,8 +21,31 @@
         background-image: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        border-bottom: 2px solid rgb(90, 117, 182);
     }
+
+    &_button {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    &_count {
+        font-size: 12px;
+       
+       
+    }
+    &_restore {
+        padding-top: 2px;
+        font-size: 12px;
+
+      
+    }
+    &_save {
+        font-size: 12px;
+    }
+    
 }
+
 
 main {
     color: rgb(245, 121, 245);
@@ -32,6 +55,11 @@ main {
 .form {
     margin-top: 25px;
     align-items: center;
+
+    &_search {
+        margin-inline: 10px;
+        margin-bottom: 15px;
+    }
 
     &_display {
         display: grid;
@@ -54,9 +82,13 @@ main {
     }
 
     &_btn {
+        margin-block: 20px;
         height: 25px;
-        width: 45px;
-        background-color: rgb(245, 121, 245);
+        width: 55px;
+        background-color: rgb(247, 150, 247);
+        border-radius: 8px;
+        border: 3px solid rgb(245, 121, 245);
+        
     }
 }
 
@@ -74,8 +106,8 @@ main {
         align-items: center;     
         justify-content: center;
         list-style-type: none;
-        width: 220px;
-        height: 300px;
+        width: 250px;
+        height: 360px;
         border-radius: 3%;
         border: solid rgb(245, 121, 245);
         background-color: rgb(90, 117, 182);
@@ -92,12 +124,24 @@ main {
         font-size: 20px;
     }
     &_author {
+        margin-top: 6px;
+        margin-bottom: 14px;
         font-size: 14px;
+    }
+
+    &_button{
+        width: 65px;
+        height: 28px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        background-color: white;
+        border: 1px solid rgb(247, 150, 247);
+     
     }
 }
 
 .selected {
     border: 3px solid rgb(245, 121, 245);
-    background-color:rgb(245, 121, 245);
+    background-color:rgb(247, 150, 247);
     transition: all 0.3s ease; 
 }
