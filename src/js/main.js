@@ -12,7 +12,7 @@ let bookCount = 0;
 
 // SECCIÓN DE LAS FUNCIONES
 
-const renderOneBooks = (booksObj, selected) => {
+const renderOneBooks = (booksObj) => {
   return `
         <li class="js_booksList book_list ${
           booksObj.added ? "selected" : ""
@@ -141,7 +141,8 @@ fetch("http://beta.adalab.es/resources/apis/books-v1/childrens-books.json")
       if (element.cover_image === null) {
         element.cover_image =
           "https://static.vecteezy.com/system/resources/previews/007/517/574/large_2x/red-closed-book-school-collection-illustration-cartoon-style-on-a-white-background-vector.jpg";
-        renderAllBooks(allBooks);
       }
     });
+
+    renderAllBooks(allBooks);
   });
