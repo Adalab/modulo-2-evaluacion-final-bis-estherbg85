@@ -12,16 +12,18 @@ let bookCount = 0;
 
 // SECCIÓN DE LAS FUNCIONES
 
-const renderOneBooks = (booksObj) => {
+const renderOneBooks = (booksObj, selected) => {
   return `
-        <li class="js_booksList book_list" data-id="${booksObj.id}">
+        <li class="js_booksList book_list ${
+          booksObj.added ? "selected" : ""
+        }" data-id="${booksObj.id}">
             <img class="book_image" src="${booksObj.cover_image}" alt="${
     booksObj.name
   }"/>
             <h2 class="book_name">${booksObj.name}</h2> 
             <h4 class="book_author">${booksObj.author}</h4> 
             <button class="cart_button">${
-              booksObj.added ? "Quitar del carrito" : "Añadir al carrito"
+              booksObj.added ? "X Delete" : "🛒 Add"
             }</button>
         </li>`;
 };
@@ -59,7 +61,6 @@ const handleCount = (ev) => {
       clickedBook.added = false;
       bookCount--; // Disminuir el contador
     }
-
     // Volver a renderizar los libros
     renderAllBooks(allBooks);
   }

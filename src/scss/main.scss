@@ -95,3 +95,9 @@ main {
         font-size: 14px;
     }
 }
+
+.selected {
+    border: 3px solid rgb(245, 121, 245);
+    background-color:rgb(245, 121, 245);
+    transition: all 0.3s ease; 
+}
