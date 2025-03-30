@@ -1,0 +1,49 @@
+@use '../core/mixins' as mc;
+
+.form {
+    margin-top: 25px;
+    align-items: center;
+
+    @include mc.tablet {
+        font-size: 25px;
+      }
+      @include mc.desktop {
+          font-size: 35px;
+      }
+  
+
+    &_search {
+        margin-inline: 10px;
+        margin-bottom: 15px;
+    }
+
+    &_display {
+        display: grid;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    &_filter {
+        font-weight: bold;
+        font-size: 16px;
+        color: rgb(90, 117, 182);
+    }
+
+    &_input {
+        width: 200px;
+        height: 25px;
+        border-radius: 8px;
+        border: 3px solid rgb(90, 117, 182);
+    }
+
+    &_btn {
+        margin-block: 20px;
+        height: 25px;
+        width: 55px;
+        background-color: rgb(247, 150, 247);
+        border-radius: 8px;
+        border: 3px solid rgb(245, 121, 245);
+        
+    }
+}

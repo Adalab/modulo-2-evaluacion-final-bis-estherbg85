@@ -1,0 +1,66 @@
+@use '../core/mixins' as mc;
+
+.book {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 10px; 
+    grid-row-gap: 20px;
+    color: white;
+    margin-bottom: 35px;
+
+    @include mc.tablet {
+        grid-template-columns: 1fr 1fr;
+        margin-inline: 50px;
+    }
+
+    @include mc.desktop {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    &_list {
+        list-style: none;
+        text-align: center;
+        align-items: center;     
+        justify-content: center;
+        list-style-type: none;
+        width: 250px;
+        height: 380px;
+        border-radius: 3%;
+        border: solid rgb(245, 121, 245);
+        background-color: rgb(90, 117, 182);
+    
+    }
+
+    &_image { 
+        margin-block: 15px;
+        width: 180px;   
+        height: 200px; 
+    } 
+
+    &_name {
+        font-size: 22px;
+        margin-inline: 6px;
+    }
+    &_author {
+        margin-top: 6px;
+        margin-bottom: 14px;
+        font-size: 14px;
+    }
+
+    &_button{
+        width: 65px;
+        height: 28px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        background-color: white;
+        border: 1px solid rgb(247, 150, 247);
+     
+    }
+}
+
+.selected {
+    border: 3px solid rgb(90, 117, 182);
+    background-color:rgb(247, 150, 247);
+    transition: all 0.3s ease; 
+}

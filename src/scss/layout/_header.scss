@@ -1,0 +1,53 @@
+@use '../core/mixins' as mc;
+
+.header {
+    &_title {
+        text-align: center;
+        word-spacing: 20px;
+        font-size: 26px;
+        padding-block: 20px;
+        padding-inline: 25px;
+        font-weight: bold;
+        background-image: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        border-bottom: 2px solid rgb(90, 117, 182);
+
+        @include mc.tablet {
+          font-size: 35px;
+        }
+        @include mc.desktop {
+            font-size: 55px;
+        }
+    }
+
+    &_button {
+        text-align: center;
+        margin-top: 20px;
+       
+    }
+
+    &_count {
+        font-size: 12px;
+        padding-block: 2px;
+    }
+
+    &_save {
+        font-size: 12px;
+    }
+    
+    &_restore {
+        padding-top: 0.3rem;
+        padding-bottom: 0.1rem;
+      
+        font-size: 12px;
+    }
+
+    &_delete {
+        font-size: 12px;
+        padding-top: 0.3rem;
+        padding-bottom: 0.2rem;
+    
+    }
+   
+}

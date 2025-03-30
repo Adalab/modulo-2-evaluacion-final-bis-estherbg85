@@ -1,2 +1,9 @@
-@use '../core/variables' as vars;
+.footer {
+    text-align: center;
+    border-top: 2px solid rgb(90, 117, 182);
 
+    &_copy {
+        margin-block: 15px;
+        color: white;
+    }
+}

@@ -6,6 +6,7 @@ const book = document.querySelector(".js_book");
 const countList = document.querySelector(".js_count");
 const saveButton = document.querySelector(".js_save");
 const restoreButton = document.querySelector(".js_restore");
+const deleteButton = document.querySelector(".js_delete");
 
 //ARRAYS
 
@@ -86,16 +87,27 @@ const restoreCart = () => {
   const savedBooks = JSON.parse(localStorage.getItem("savedCart")); // Obtener los libros guardados
 
   if (savedBooks && savedBooks.length > 0) {
-    allBooks = savedBooks; // Sobreescribir allBooks con solo los libros guardados
     bookCount = savedBooks.length; // Actualizar el contador
 
-    renderAllBooks(allBooks); // Renderizar solo los libros guardados
+    renderAllBooks(savedBooks); // Renderizar solo los libros guardados
   }
+};
+
+const deleteCart = () => {
+  localStorage.removeItem("savedCart");
+  bookCount = 0;
+
+  allBooks.forEach((book) => {
+    book.added = false;
+  });
+  renderAllBooks(allBooks);
 };
 // Agregar el evento al botón de "Restaurar"
 restoreButton.addEventListener("click", restoreCart);
 
 saveButton.addEventListener("click", saveCart);
+
+deleteButton.addEventListener("click", deleteCart);
 
 // CUANDO CARGA LA PÁGINA
 
