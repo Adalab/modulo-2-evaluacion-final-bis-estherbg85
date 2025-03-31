@@ -7,8 +7,9 @@ const countList = document.querySelector(".js_count");
 const saveButton = document.querySelector(".js_save");
 const restoreButton = document.querySelector(".js_restore");
 const deleteButton = document.querySelector(".js_delete");
-const deleteForm = document.querySelector(".js_formDelete");
 const form = document.querySelector(".js_form");
+const searchInput = document.querySelector(".js_search");
+const btnSearch = document.querySelector(".js_btnSearch");
 
 //ARRAYS
 
@@ -125,10 +126,23 @@ saveButton.addEventListener("click", saveCart);
 
 deleteButton.addEventListener("click", deleteCart);
 
-deleteForm.addEventListener("click", (ev) => {
-  ev.preventDefault();
-});
+// FILTRADO POR TITULO
+const filterBooks = () => {
+  const searchText = searchInput.value.toLowerCase().trim(); // Obtiene y limpia el texto
+  const filteredBooks = allBooks.filter((book) =>
+    book.name.toLowerCase().includes(searchText)
+  );
+  renderAllBooks(filteredBooks); // Vuelve a mostrar solo los cuentos que coinciden
+};
 
+// Evento al escribir en el campo (filtrado en tiempo real)
+searchInput.addEventListener("input", filterBooks);
+
+// Evento al hacer clic en el botón de búsqueda
+btnSearch.addEventListener("click", (ev) => {
+  ev.preventDefault();
+  filterBooks();
+});
 // CUANDO CARGA LA PÁGINA
 
 fetch("http://beta.adalab.es/resources/apis/books-v1/childrens-books.json")
