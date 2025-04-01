@@ -21,15 +21,15 @@ let bookCount = 0;
 const renderOneBooks = (booksObj) => {
   return `
         <li class="js_booksList book_list ${
-          booksObj.added ? "selected" : ""
+          booksObj.added ? "selected " : ""
         }" data-id="${booksObj.id}">
             <img class="book_image" src="${booksObj.cover_image}" alt="${
     booksObj.name
   }"/>
             <h2 class="book_name">${booksObj.name}</h2> 
             <h4 class="book_author">${booksObj.author}</h4> 
-            <button class="book_button">${
-              booksObj.added ? "X Delete" : "🛒 Add"
+            <button class="js_book_button icon">${
+              booksObj.added ? "X" : "🛒"
             }</button>
         </li>`;
 };
@@ -42,16 +42,17 @@ const renderAllBooks = (booksArray) => {
 
   book.innerHTML = html;
 
-  const cartButtons = document.querySelectorAll(".book_button");
+  // Añadimos evento al botón de dentro de cada libro, para añadir o elimiar del carrito
+
+  const cartButtons = document.querySelectorAll(".js_book_button");
   cartButtons.forEach((button) => {
     button.addEventListener("click", handleCount);
   });
-
-  // Actualizar el contador del carrito
   updateCountList();
 };
 
 // Manejar clic en el botón de "Añadir al carrito"
+
 const handleCount = (ev) => {
   const clickedId = parseInt(
     ev.currentTarget.closest("li").getAttribute("data-id")
@@ -67,7 +68,6 @@ const handleCount = (ev) => {
       clickedBook.added = false;
       bookCount--; // Disminuir el contador
     }
-    // Volver a renderizar los libros
     renderAllBooks(allBooks);
   }
 };
@@ -92,7 +92,7 @@ const restoreCart = () => {
   if (savedBooks && savedBooks.length > 0) {
     bookCount = savedBooks.length; // Actualizar el contador
 
-    renderAllBooks(savedBooks); // Renderizar solo los libros guardados
+    renderAllBooks(savedBooks);
 
     if (form) {
       form.classList.add("hidden");
@@ -102,6 +102,8 @@ const restoreCart = () => {
       .classList.add("divBooks");
   }
 };
+
+// Borrar cuentos guardados en localstorage
 
 const deleteCart = () => {
   localStorage.removeItem("savedCart");
@@ -119,14 +121,22 @@ const deleteCart = () => {
   renderAllBooks(allBooks);
 };
 
-// Agregar el evento al botón de "Restaurar"
+// EVENTOS
+
 restoreButton.addEventListener("click", restoreCart);
 
 saveButton.addEventListener("click", saveCart);
 
 deleteButton.addEventListener("click", deleteCart);
 
+// Evento al hacer clic en el botón de búsqueda
+
+btnSearch.addEventListener("click", (ev) => {
+  ev.preventDefault();
+});
+
 // FILTRADO POR TITULO
+
 const filterBooks = () => {
   const searchText = searchInput.value.toLowerCase().trim(); // Obtiene y limpia el texto
   const filteredBooks = allBooks.filter((book) =>
@@ -138,11 +148,6 @@ const filterBooks = () => {
 // Evento al escribir en el campo (filtrado en tiempo real)
 searchInput.addEventListener("input", filterBooks);
 
-// Evento al hacer clic en el botón de búsqueda
-btnSearch.addEventListener("click", (ev) => {
-  ev.preventDefault();
-  filterBooks();
-});
 // CUANDO CARGA LA PÁGINA
 
 fetch("http://beta.adalab.es/resources/apis/books-v1/childrens-books.json")
@@ -152,15 +157,11 @@ fetch("http://beta.adalab.es/resources/apis/books-v1/childrens-books.json")
       id: book.id,
       name: book.name,
       author: book.author,
-      cover_image: book.cover_image,
+      cover_image:
+        book.cover_image ||
+        "https://static.vecteezy.com/system/resources/previews/007/517/574/large_2x/red-closed-book-school-collection-illustration-cartoon-style-on-a-white-background-vector.jpg",
       added: false,
     }));
-    allBooks.forEach((element) => {
-      if (element.cover_image === null) {
-        element.cover_image =
-          "https://static.vecteezy.com/system/resources/previews/007/517/574/large_2x/red-closed-book-school-collection-illustration-cartoon-style-on-a-white-background-vector.jpg";
-      }
-    });
 
     renderAllBooks(allBooks);
   });

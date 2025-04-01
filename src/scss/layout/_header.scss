@@ -1,5 +1,16 @@
 @use '../core/mixins' as mc;
 
+.body, html {
+    background-color: rgb(8, 32, 87);
+}
+
+
+main {
+    color: rgb(245, 121, 245);
+    text-align: center;
+}
+
+
 .header {
     &_title {
         text-align: center;
@@ -53,7 +64,5 @@
         font-size: 12px;
         padding-top: 0.3rem;
         padding-bottom: 0.2rem;
-    
     }
-   
 }

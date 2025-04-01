@@ -2,19 +2,10 @@
 @use './core/reset';
 @use './layout/header';
 @use './layout/form';
-@use './layout/bookList';
+@use './components/bookList';
 @use './layout/footer';
 
 
-.body, html {
-    background-color: rgb(8, 32, 87);
-}
-
-
-main {
-    color: rgb(245, 121, 245);
-    text-align: center;
-}
 
 
 
