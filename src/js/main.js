@@ -150,7 +150,7 @@ searchInput.addEventListener("input", filterBooks);
 
 // CUANDO CARGA LA PÁGINA
 
-fetch("http://beta.adalab.es/resources/apis/books-v1/childrens-books.json")
+fetch("https://beta.adalab.es/resources/apis/books-v1/childrens-books.json")
   .then((response) => response.json())
   .then((data) => {
     allBooks = data.map((book, id) => ({
